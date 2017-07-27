@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"os"
+)
 
 func main() {
-	fmt.Println("vim-go")
+	filename := os.Args[1]
+	buf, err := ioutil.ReadFile(filename)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%s\n", buf)
 }
